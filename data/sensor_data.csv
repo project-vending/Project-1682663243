@@ -1,0 +1,21 @@
+python
+import csv
+import os
+
+# set the path to the `sensor_data.csv` file
+data_path = os.path.join(os.getcwd(), 'data', 'sensor_data.csv')
+
+# sample data for demonstration purposes
+data = [
+    {'timestamp': '2023-03-02 12:00:00', 'sensor_id': 'sensor-1', 'value': 23.4},
+    {'timestamp': '2023-03-02 12:01:00', 'sensor_id': 'sensor-2', 'value': 19.5},
+    {'timestamp': '2023-03-02 12:02:00', 'sensor_id': 'sensor-3', 'value': 21.2},
+    # add more sample data here
+]
+
+# write the data to the `sensor_data.csv` file
+with open(data_path, mode='w', newline='') as f:
+    writer = csv.DictWriter(f, fieldnames=['timestamp', 'sensor_id', 'value'])
+    writer.writeheader()
+    for row in data:
+        writer.writerow(row)
